@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="result"
+            type="com.example.vCovid.models.summary.Country" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/countryRowLayout"
+        onCountryClickListener = "@{result}"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        >
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/row_cardView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.48000002"
+            app:strokeColor="@color/lightMediumGray"
+            app:strokeWidth="1dp">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <TextView
+                    android:id="@+id/countryName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:ellipsize="end"
+                    android:text="@{result.country}"
+                    tools:text="India"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="25sp"
+
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/Cases"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Confirmed"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/countryName"
+                    tools:text="Confirmed" />
+
+                <TextView
+                    android:id="@+id/Deaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Deaths"
+                    android:textSize="18sp"
+                    android:textColor="@color/red"
+                    tools:text="Deaths"
+                    app:layout_constraintEnd_toStartOf="@+id/Active"
+                    app:layout_constraintStart_toEndOf="@+id/Cases"
+                    app:layout_constraintTop_toBottomOf="@+id/countryName" />
+
+                <TextView
+                    android:id="@+id/Active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Active"
+                    android:textColor="@color/darkgreen"
+                    tools:text="Deaths"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/countryName" />
+
+                <TextView
+                    android:id="@+id/casesnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="100"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    setConfirmed="@{result.totalConfirmed}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/Cases"
+                    app:layout_constraintStart_toStartOf="@+id/Cases"
+                    app:layout_constraintTop_toBottomOf="@+id/Cases" />
+
+                <TextView
+                    android:id="@+id/deathsnum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="50"
+                    setDeaths="@{result.totalDeaths}"
+                    android:textSize="18sp"
+                    android:textColor="@color/red"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/Deaths"
+                    app:layout_constraintStart_toStartOf="@+id/Deaths"
+                    app:layout_constraintTop_toBottomOf="@+id/Deaths" />
+
+                <TextView
+                    android:id="@+id/activeNum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="20"
+                    confirmed="@{result.totalConfirmed}"
+                    recovered = "@{result.totalRecovered}"
+                    deaths = "@{result.totalDeaths}"
+                    android:textSize="18sp"
+                    android:textColor="@color/darkgreen"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/Active"
+                    app:layout_constraintStart_toStartOf="@+id/Active"
+                    app:layout_constraintTop_toBottomOf="@+id/Active" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
